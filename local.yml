@@ -7,7 +7,6 @@
         dest_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
         src_pub_key: "../.ssh/proton_rsa.pub"
         dest_pub_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519.pub"
-        gist_host: "gist.github.com-proton"
   tasks:
 
     - include_tasks: tasks/core.yml
