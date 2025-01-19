@@ -1,3 +1,4 @@
+
 - name: Ensure .ssh directory exists
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh"
@@ -23,3 +24,23 @@
   with_items: "{{ ssh_keys }}"
   tags: 
     - ssh
+
+- name: Start SSH agent and add keys
+  shell: |
+    eval $(ssh-agent -s)
+    {% for key in ssh_keys %}
+    ssh-add {{ key.dest_key }}
+    {% endfor %}
+  tags: 
+    - ssh
+
+- name: Change ownership of .ssh directory and keys
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    recurse: yes
+  tags: 
+    - ssh
+

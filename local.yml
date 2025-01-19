@@ -14,16 +14,14 @@
         - packages 
         - update-dotfiles
 
-    - include_tasks: tasks/copy-keys.yml
-      tags:
-        - ssh
-
-    - include_tasks: tasks/setup-ssh.yml
+    - include_tasks: tasks/ssh.yml
       tags:
         - ssh
 
     - include_tasks: tasks/git-config.yml
       tags:
-        - git
+        - git-config
 
     - include_tasks: tasks/clone-ansible-sway.yml
+      tags:
+        - prj-ansible-sway 
