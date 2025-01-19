@@ -1,0 +1,42 @@
+- name: Ensure system utility packages are installed
+  become: yes
+  pacman:
+    name:
+      - man-db
+      - brightnessctl
+      - gammastep
+      - openssh
+      - tmux
+      - vim 
+      - zsh
+      - qt6-wayland
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
+- name: Ensure UI application packages are installed
+  become: yes
+  pacman:
+    name:
+      - sway
+      - swaybg
+      - wmenu
+      - wezterm
+      - qutebrowser
+      - zathura
+      - zathura-pdf-poppler
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
+- name: Copy .config files 
+  copy:
+    src: "../dotfiles/"
+    dest: "{{ ansible_env.HOME }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: '0755'
+  tags:
+    - update-dotfiles

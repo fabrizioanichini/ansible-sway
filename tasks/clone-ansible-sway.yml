@@ -1,0 +1,20 @@
+- name: Ensure projects directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/projects"
+    state: directory
+    mode: '0755'
+
+- name: Clone Ansible Sway repository
+  git:
+    repo: 'git@github.com:fabrizioanichini/ansible-sway.git'
+    dest: "{{ ansible_env.HOME }}/projects/ansible-sway"
+    version: main
+    accept_hostkey: yes
+  environment:
+    GIT_SSH_COMMAND: "ssh -vvv"
+  register: git_clone_result
+
+- name: Debug Git clone result
+  debug:
+    var: git_clone_result
+

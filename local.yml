@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  vars:
+    ssh_keys:
+      - name: "proton"
+        src_key: "../.ssh/proton_rsa"
+        dest_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+        src_pub_key: "../.ssh/proton_rsa.pub"
+        dest_pub_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519.pub"
+        gist_host: "gist.github.com-proton"
+  tasks:
+
+    - include_tasks: tasks/core.yml
+      tags:
+        - packages 
+        - update-dotfiles
+
+    - include_tasks: tasks/copy-keys.yml
+      tags:
+        - ssh
+
+    - include_tasks: tasks/setup-ssh.yml
+      tags:
+        - ssh
+
+    - include_tasks: tasks/git-config.yml
+      tags:
+        - git
+
+    - include_tasks: tasks/clone-ansible-sway.yml

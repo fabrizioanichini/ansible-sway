@@ -1,0 +1,25 @@
+- name: Ensure .ssh directory exists
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh"
+    state: directory
+    mode: '0700'
+  tags: 
+    - ssh
+
+- name: Copy SSH private keys
+  copy:
+    src: "{{ item.src_key }}"
+    dest: "{{ item.dest_key }}"
+    mode: '0600'
+  with_items: "{{ ssh_keys }}"
+  tags: 
+    - ssh
+
+- name: Copy SSH public keys
+  copy:
+    src: "{{ item.src_pub_key }}"
+    dest: "{{ item.dest_pub_key }}"
+    mode: '0644'
+  with_items: "{{ ssh_keys }}"
+  tags: 
+    - ssh

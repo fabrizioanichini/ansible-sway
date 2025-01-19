@@ -1,0 +1,11 @@
+- name: Set global Git configuration (fallback)
+  git_config:
+    name: "{{ item.name }}"
+    scope: global
+    value: "{{ item.value }}"
+  loop:
+    - { name: 'user.name', value: 'Fabrizio Anichini' }
+    - { name: 'user.email', value: 'fabrizioanichini@proton.me' }
+    - { name: 'pull.rebase', value: 'false' }
+  tags:
+    - git-config
