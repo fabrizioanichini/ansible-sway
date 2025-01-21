@@ -8,7 +8,7 @@
       - openssh
       - tmux
       - vim 
-      - qt6-wayland
+      - qt6-wayland # needed for qutebrowser
     state: present
     update_cache: yes
   tags:
