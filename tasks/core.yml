@@ -9,6 +9,7 @@
       - tmux
       - vim 
       - qt6-wayland # needed for qutebrowser
+      - ctags
     state: present
     update_cache: yes
   tags:
