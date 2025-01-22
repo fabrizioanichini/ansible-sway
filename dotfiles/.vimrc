@@ -5,5 +5,6 @@ source $VIMRUNTIME/defaults.vim
 set number			" Show line numbers
 set scrolloff=8			" Keep 8 lines visible above/below the cursor when scrolling
 
-" ---- SOFTWARE DEVELOPMENT SETTINGS --- "
+" ---- CTAGS --- "
 set tags=./tags;/		" Looks for tags file in current dir 
+autocmd BufWritePost *.py silent! !ctags -R --languages=python --exclude=venv --exclude=.git --exclude=static .
