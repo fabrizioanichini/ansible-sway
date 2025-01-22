@@ -6,4 +6,4 @@ set number			" Show line numbers
 set scrolloff=8			" Keep 8 lines visible above/below the cursor when scrolling
 
 " ---- SOFTWARE DEVELOPMENT SETTINGS --- "
-set tags=./tags,./.tags;,tags	" Looks for tags file in current dir, parent dirs, or globally (based on ctags)
+set tags=./tags;/		" Looks for tags file in current dir 
