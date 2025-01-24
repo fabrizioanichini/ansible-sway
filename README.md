@@ -10,3 +10,7 @@ I have used archinstall, made a partition with ext4, and added linux-firmware as
 
 You only need git and ansible package to get started.
 
+## Helpers 
+* [Bash Shortcuts](./doc/bash_shortcuts.md)
+* [Vim Cheatsheet](./doc/vim_cht.md)
+
