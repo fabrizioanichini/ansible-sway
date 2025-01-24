@@ -1,6 +1,3 @@
-Our vim configuration is based on vim-gt3 that seems to be the best version for WSL.
-In fact it does allow to copy/paste (allowing +clipboard). which is important to me as a script kiddie.
-
 ## How to get help
 
 You can reference to the manual in a lot of different ways : 
