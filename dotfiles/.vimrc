@@ -16,6 +16,7 @@ call plug#end()
 
 " ---------- BASIC VIM SETTINGS ---------- " 
 set number			" Show line numbers
+set relativenumber              " Show relative number for easier navigation
 set scrolloff=8			" Keep 8 lines visible above/below the cursor when scrolling
 
 " ---------- Key Mapping ---------- " 
