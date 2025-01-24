@@ -1,3 +1,6 @@
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim     " :echo $VIMRUNTIME
+
 " ---------- Autoload VimPlug ---------- " 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -10,9 +13,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
-
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
 
 " ---------- BASIC VIM SETTINGS ---------- " 
 set number			" Show line numbers
