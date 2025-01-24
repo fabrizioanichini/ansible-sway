@@ -21,6 +21,7 @@ set scrolloff=8			" Keep 8 lines visible above/below the cursor when scrolling
 
 " ---------- Key Mapping ---------- " 
 nnoremap <leader>ff :Files<CR> | " Open FZF fuzzy finder
+nnoremap <leader>e :Ex<CR> |     " Quick NetRW
 
 " ---------- CTAGS ---------- "
 set tags=./tags;/		" Looks for tags file in current dir 
