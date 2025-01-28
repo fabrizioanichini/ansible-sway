@@ -1,3 +1,4 @@
+# ===================== Core Task: System Packages =====================
 - name: Ensure system utility packages are installed
   become: yes
   pacman:
@@ -7,14 +8,15 @@
       - gammastep
       - openssh
       - tmux
-      - vim 
-      - qt6-wayland # needed for qutebrowser
+      - vim
+      - qt6-wayland  # Needed for qutebrowser
       - ctags
     state: present
     update_cache: yes
   tags:
     - packages
 
+# ===================== Core Task: UI Applications =====================
 - name: Ensure UI application packages are installed
   become: yes
   pacman:
@@ -31,7 +33,8 @@
   tags:
     - packages
 
-- name: Copy .config files 
+# ===================== Core Task: Dotfiles =====================
+- name: Copy .config files
   copy:
     src: "../dotfiles/"
     dest: "{{ ansible_env.HOME }}"
