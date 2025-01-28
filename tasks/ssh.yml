@@ -1,10 +1,10 @@
-
+# ===================== SSH Configuration =====================
 - name: Ensure .ssh directory exists
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh"
     state: directory
     mode: '0700'
-  tags: 
+  tags:
     - ssh
 
 - name: Copy SSH private keys
@@ -13,7 +13,7 @@
     dest: "{{ item.dest_key }}"
     mode: '0600'
   with_items: "{{ ssh_keys }}"
-  tags: 
+  tags:
     - ssh
 
 - name: Copy SSH public keys
@@ -22,7 +22,7 @@
     dest: "{{ item.dest_pub_key }}"
     mode: '0644'
   with_items: "{{ ssh_keys }}"
-  tags: 
+  tags:
     - ssh
 
 - name: Start SSH agent and add keys
@@ -31,7 +31,7 @@
     {% for key in ssh_keys %}
     ssh-add {{ key.dest_key }}
     {% endfor %}
-  tags: 
+  tags:
     - ssh
 
 - name: Change ownership of .ssh directory and keys
@@ -41,6 +41,5 @@
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
     recurse: yes
-  tags: 
+  tags:
     - ssh
-
