@@ -1,27 +1,32 @@
 ---
 - hosts: localhost
   vars:
+    # SSH key variables for seamless SSH setup
     ssh_keys:
       - name: "proton"
         src_key: "../.ssh/proton_rsa"
         dest_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
         src_pub_key: "../.ssh/proton_rsa.pub"
         dest_pub_key: "{{ ansible_env.HOME }}/.ssh/id_ed25519.pub"
-  tasks:
 
+  tasks:
+    # Include task for system utilities and UI packages
     - include_tasks: tasks/core.yml
       tags:
-        - packages 
+        - packages
         - update-dotfiles
 
+    # Include task for SSH configuration
     - include_tasks: tasks/ssh.yml
       tags:
         - ssh
 
+    # Include task for Git global configuration
     - include_tasks: tasks/git-config.yml
       tags:
         - git-config
 
+    # Include task for cloning Ansible Sway repository
     - include_tasks: tasks/clone-ansible-sway.yml
       tags:
-        - prj-ansible-sway 
+        - prj-ansible-sway
