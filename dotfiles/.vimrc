@@ -1,28 +1,41 @@
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim     " :echo $VIMRUNTIME
+" ===================== VIMRC Configuration =====================
+" Get the default configurations most users want
+source $VIMRUNTIME/defaults.vim     " Load default Vim settings from runtime directory
 
-" ---------- Autoload VimPlug ---------- " 
+" ===================== Auto-install VimPlug =====================
+" Auto-download VimPlug plugin manager if not already installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" ---------- Plugins ---------- " 
-call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
+" ===================== Plugins =====================
+" Declare plugins managed by VimPlug
+call plug#begin()  " Initialize plugin block
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy Finder core
+Plug 'junegunn/fzf.vim'                             " FZF Vim integration
+call plug#end()  " End plugin block
 
-" ---------- BASIC VIM SETTINGS ---------- " 
-set number			" Show line numbers
-set relativenumber              " Show relative number for easier navigation
-set scrolloff=8			" Keep 8 lines visible above/below the cursor when scrolling
+" ===================== Basic Vim Settings =====================
+" Interface settings
+set number             " Show absolute line numbers
+set relativenumber     " Show relative line numbers for easier navigation
+set scrolloff=8        " Keep at least 8 lines visible above/below the cursor when scrolling
 
-" ---------- Key Mapping ---------- " 
-nnoremap <leader>ff :Files<CR> | " Open FZF fuzzy finder
-nnoremap <leader>e :Ex<CR> |     " Quick NetRW
+" ===================== Key Mappings =====================
+" Define custom keybindings
+nnoremap <leader>ff :Files<CR>  " Open FZF fuzzy finder using <leader> + ff
+nnoremap <leader>e :Ex<CR>      " Open NetRW file explorer using <leader> + e
 
-" ---------- CTAGS ---------- "
-set tags=./tags;/		" Looks for tags file in current dir 
+" ===================== CTAGS Integration =====================
+" Configure ctags for better navigation and auto-generation
+set tags=./tags;/  " Search for tags file in current directory and upwards
+
+" Automatically regenerate tags file when saving Python files
 autocmd BufWritePost *.py silent! !ctags -R --languages=python --exclude=venv --exclude=.git --exclude=static .
+
+" ===================== Notes =====================
+" - <leader> is usually mapped to "\" by default. You can customize it as needed:
+"   let mapleader = " "  " Uncomment this to use space as the leader key
+" - Use `:PlugStatus` to verify the status of your plugins.
