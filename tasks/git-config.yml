@@ -1,4 +1,5 @@
-- name: Set global Git configuration (fallback)
+# ===================== Git Configuration =====================
+- name: Set global Git configuration
   git_config:
     name: "{{ item.name }}"
     scope: global
