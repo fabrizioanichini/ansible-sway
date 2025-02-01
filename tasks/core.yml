@@ -11,6 +11,7 @@
       - vim
       - qt6-wayland  # Needed for qutebrowser
       - ctags
+      - autotiling
     state: present
     update_cache: yes
   tags:
