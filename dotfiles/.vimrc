@@ -25,8 +25,9 @@ set scrolloff=8        " Keep at least 8 lines visible above/below the cursor wh
 
 " ===================== Key Mappings =====================
 " Define custom keybindings
-nnoremap <leader>ff :Files<CR>  " Open FZF fuzzy finder using <leader> + ff
-nnoremap <leader>e :Ex<CR>      " Open NetRW file explorer using <leader> + e
+let mapleader = " " 
+nnoremap <leader>sf :Files<CR> |  " Open FZF fuzzy finder using <leader> + ff
+nnoremap <leader>e :Ex<CR>     |  " Open NetRW file explorer using <leader> + e
 
 " ===================== CTAGS Integration =====================
 " Configure ctags for better navigation and auto-generation

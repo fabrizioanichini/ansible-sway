@@ -11,8 +11,8 @@ Bash Shortcuts
 | ctrl + e | Goto END of command line       |
 | ctrl + b | move back one character        |
 | ctrl + f | move forward one character     |
-| alt + f  | move cursor FORWARD one word   |
-| alt + b  | move cursor BACK one word      |
+| esc + f  | move cursor FORWARD one word   |
+| esc + b  | move cursor BACK one word      |
 | ctrl + xx | Toggle between the start of line and current cursor position |
 | ctrl + ] + x	 | Where x is any character, moves the cursor forward to the next occurance of x |
 | alt + ctrl + ] + x  | Where x is any character, moves the cursor backwards to the previous occurance of x |
