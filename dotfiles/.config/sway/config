@@ -6,6 +6,7 @@
 
 # Executions
 exec gammastep -c ~/.config/gammastep/config.ini
+exec_always autotiling
 
 ### Variables
 #
