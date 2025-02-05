@@ -1,7 +1,3 @@
-" ===================== VIMRC Configuration =====================
-" Get the default configurations most users want
-source $VIMRUNTIME/defaults.vim     " Load default Vim settings from runtime directory
-
 " ===================== Auto-install VimPlug =====================
 " Auto-download VimPlug plugin manager if not already installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -18,10 +14,13 @@ Plug 'junegunn/fzf.vim'                             " FZF Vim integration
 call plug#end()  " End plugin block
 
 " ===================== Basic Vim Settings =====================
+colorscheme evening    " Coloscheme
+
 " Interface settings
 set number             " Show absolute line numbers
 set relativenumber     " Show relative line numbers for easier navigation
 set scrolloff=8        " Keep at least 8 lines visible above/below the cursor when scrolling
+set clipboard=unnamedplus " Use systemclipboard
 
 " ===================== Key Mappings =====================
 " Define custom keybindings
