@@ -28,13 +28,6 @@ let mapleader = " "
 nnoremap <leader>sf :Files<CR> |  " Open FZF fuzzy finder using <leader> + ff
 nnoremap <leader>e :Ex<CR>     |  " Open NetRW file explorer using <leader> + e
 
-" ===================== CTAGS Integration =====================
-" Configure ctags for better navigation and auto-generation
-set tags=./tags;/  " Search for tags file in current directory and upwards
-
-" Automatically regenerate tags file when saving Python files
-autocmd BufWritePost *.py silent! !ctags -R --languages=python --exclude=venv --exclude=.git --exclude=static .
-
 " ===================== Notes =====================
 " - <leader> is usually mapped to "\" by default. You can customize it as needed:
 "   let mapleader = " "  " Uncomment this to use space as the leader key
