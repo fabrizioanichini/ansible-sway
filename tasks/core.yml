@@ -4,15 +4,36 @@
   pacman:
     name:
       - man-db
+      - openssh
       - brightnessctl
       - gammastep
-      - openssh
-      - tmux
-      - neovim
-      - qt6-wayland  # Needed for qutebrowser
-      - ctags
-      - autotiling
       - wl-clipboard
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
+# ===================== Core Task: Flow Packages =====================
+- name: Ensure flow utility packages are installed
+  become: yes
+  pacman:
+    name:
+      - neovim 
+      - tmux 
+    state: present
+    update_cache: yes
+  tags:
+    - packages
+
+# ===================== Core Task: Sway Packages =====================
+- name: Ensure Sway packages are installed
+  become: yes
+  pacman:
+    name:
+      - sway
+      - swaybg
+      - wmenu
+      - autotiling
     state: present
     update_cache: yes
   tags:
@@ -23,17 +44,15 @@
   become: yes
   pacman:
     name:
-      - sway
-      - swaybg
-      - wmenu
       - wezterm
-      - qutebrowser
+      - firefox
       - zathura
       - zathura-pdf-poppler
     state: present
     update_cache: yes
   tags:
     - packages
+
 
 # ===================== Core Task: Dotfiles =====================
 - name: Copy .config files
