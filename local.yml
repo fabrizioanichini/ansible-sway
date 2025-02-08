@@ -21,11 +21,6 @@
       tags:
         - ssh
 
-    # Include task for fonts 
-    - include_tasks: tasks/fonts.yml
-      tags:
-        - fonts 
-
     # Include task for Git global configuration
     - include_tasks: tasks/git-config.yml
       tags:
