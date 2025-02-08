@@ -28,9 +28,6 @@ set $menu wmenu-run
 # Start qutebrowser on worskspace 1
 exec swaymsg "workspace 1; exec qutebrowser"
 
-# Start wezterm on workspace 2
-exec swaymsg "workspace 2; exec wezterm"
-
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
