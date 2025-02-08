@@ -166,6 +166,11 @@ exec_always autotiling
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    default_border none
+    gaps inner 2
+    gaps outer 1
+
 #
 # Scratchpad:
 #
