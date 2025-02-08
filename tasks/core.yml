@@ -18,6 +18,7 @@
   become: yes
   pacman:
     name:
+      - ttf-jetbrains-mono
       - neovim 
       - tmux 
     state: present

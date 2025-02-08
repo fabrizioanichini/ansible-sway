@@ -25,7 +25,7 @@ set clipboard=unnamedplus " Use systemclipboard
 " ===================== Key Mappings =====================
 " Define custom keybindings
 let mapleader = " " 
-nnoremap <leader>sf :Files<CR> |  " Open FZF fuzzy finder using <leader> + ff
+nnoremap <leader>sf :Files ./<CR> |  " Open FZF fuzzy finder using <leader> + ff
 nnoremap <leader>e :Ex<CR>     |  " Open NetRW file explorer using <leader> + e
 
 " ===================== Notes =====================
