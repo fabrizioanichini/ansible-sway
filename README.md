@@ -21,6 +21,8 @@ I have used archinstall,
 
 You only need git and ansible package to get started.
 
+layout.css.devPixelsPerPx a 1.20 for Firefox
+
 ## Helpers 
 * [Bash Shortcuts](./doc/bash_shortcuts.md)
 * [Vim Cheatsheet](./doc/vim_cht.md)
