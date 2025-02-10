@@ -7,7 +7,6 @@
 # Custom aliases to simplify common commands
 alias ls='ls --color=auto'       # Add colors to 'ls' output for better readability
 alias grep='grep --color=auto'   # Highlight matching patterns in 'grep' output
-alias vim='nvim'
 
 # ===================== Git Prompt =====================
 # Enable native Git prompt for Bash if available
