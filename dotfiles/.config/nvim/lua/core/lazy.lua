@@ -32,7 +32,7 @@ require("lazy").setup({
 	require("plugins.whichkey"),
 
 	-- Telescope
-	require("plugins.telescope"),
+	require("plugins.fzf"),
 
 	-- LSP / Completion
 	require("plugins.lsp"),
