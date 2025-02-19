@@ -4,6 +4,7 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
+		local fzf = require("fzf-lua")
 
 		-- 1. ASCII Banner (Header)
 		dashboard.section.header.val = {
@@ -19,14 +20,15 @@ return {
 		}
 
 		-- 2. Menu Buttons
-		--    Each entry is { "icon", "description", <command to run> }
-		--    If you want more/fewer buttons, just adjust the entries
 		dashboard.section.buttons.val = {
-			dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-			dashboard.button("r", "  Recent files", ":Telescope oldfiles <CR>"),
-			dashboard.button("g", "  Live grep", ":Telescope live_grep <CR>"),
+			dashboard.button("f", "  Find file", function()
+				fzf.files({
+					fd_opts = "--hidden --no-ignore-vcs --exclude .git",
+				})
+			end),
+			dashboard.button("r", "  Recent files", fzf.oldfiles),
+			dashboard.button("g", "  Live grep", fzf.live_grep),
 			dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("c", "  Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("q", "  Quit", ":qa<CR>"),
 		}
 
@@ -35,14 +37,7 @@ return {
 			"Thank you for using Neovim!",
 		}
 
-		-- You can set highlights, so the ASCII art or the footer stands out.
-		-- For example:
-		-- vim.cmd([[ highlight DashboardHeader guifg=#569CD6 ]])
-		-- vim.cmd([[ highlight DashboardCenter guifg=#DCDCAA ]])
-		-- vim.cmd([[ highlight DashboardFooter guifg=#C586C0 ]])
-
 		-- 4. Layout
-		-- Adjust the layout if needed. By default, the dashboard has sections
 		dashboard.config.layout = {
 			{ type = "padding", val = 2 },
 			dashboard.section.header,
@@ -52,7 +47,7 @@ return {
 			dashboard.section.footer,
 		}
 
-		-- Final step: activate the configured layout
+		-- Activate the configured layout
 		alpha.setup(dashboard.config)
 	end,
 }
