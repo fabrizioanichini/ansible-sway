@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Indicate if you have a Nerd Font for any plugin configs that rely on icons
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- Load core configurations
 require("core.options")
