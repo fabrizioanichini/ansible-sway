@@ -8,6 +8,9 @@
       - brightnessctl
       - gammastep
       - wl-clipboard
+      - ripgrep 
+      - fd 
+      - unzip
     state: present
     update_cache: yes
   tags:
@@ -18,7 +21,7 @@
   become: yes
   pacman:
     name:
-      - ttf-jetbrains-mono
+      - ttf-cascadia-code-nerd
       - gvim
       - neovim
       - tmux 
