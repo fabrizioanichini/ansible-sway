@@ -52,6 +52,10 @@ exec gammastep -c ~/.config/gammastep/config.ini
 exec_always autotiling
 
 ### Input configuration
+input type:touchpad {
+    natural_scroll enabled
+}
+
 #
 # Example configuration:
 #
