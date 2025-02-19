@@ -20,6 +20,7 @@
     name:
       - ttf-jetbrains-mono
       - gvim
+      - neovim
       - tmux 
     state: present
     update_cache: yes
@@ -34,7 +35,7 @@
       - sway
       - swaybg
       - wmenu
-      - foot
+      - wezterm
       - autotiling
     state: present
     update_cache: yes
