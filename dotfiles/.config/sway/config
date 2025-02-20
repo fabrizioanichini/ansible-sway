@@ -82,6 +82,11 @@ input type:touchpad {
     # Start your launcher
     bindsym Mod4+space exec $menu
 
+    # MacOs alike keybinding
+    bindsym Mod4+r exec "wtype -k F5"
+    bindsym Mod4+w exec "wtype -M ctrl -k w"
+    bindsym Mod4+t exec "wtype -M ctrl -k t"
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.

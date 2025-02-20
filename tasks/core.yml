@@ -12,6 +12,7 @@
       - fd 
       - unzip
       - fzf
+      - wtype
     state: present
     update_cache: yes
   tags:
