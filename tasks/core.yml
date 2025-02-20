@@ -52,6 +52,7 @@
   pacman:
     name:
       - firefox
+      - dbeaver
     state: present
     update_cache: yes
   tags:
