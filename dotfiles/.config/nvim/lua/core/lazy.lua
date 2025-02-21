@@ -28,6 +28,9 @@ require("lazy").setup({
 	-- Git signs
 	require("plugins.gitsigns"),
 
+	-- VimFugitive
+	require("plugins.fugitive"),
+		
 	-- WhichKey
 	require("plugins.whichkey"),
 
