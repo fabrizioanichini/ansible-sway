@@ -2,16 +2,14 @@
 -- =                   plugins/colorscheme.lua                           =
 -- ======================================================================
 return {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      require('tokyonight').setup({
-        styles = {
-          comments = { italic = false },
-        },
-      })
-      vim.cmd.colorscheme('tokyonight-night')
-    end,
-  }
-  
-  
+	"ellisonleao/gruvbox.nvim",
+	priority = 1000,
+	config = function()
+		require("gruvbox").setup({
+			styles = {
+				comments = { italic = false },
+			},
+		})
+		vim.cmd.colorscheme("gruvbox")
+	end,
+}
