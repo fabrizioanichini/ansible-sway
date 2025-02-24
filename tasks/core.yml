@@ -13,6 +13,8 @@
       - unzip
       - fzf
       - wtype
+      - bluez
+      - bluez-utils
     state: present
     update_cache: yes
   tags:

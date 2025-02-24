@@ -56,6 +56,19 @@ input type:touchpad {
     natural_scroll enabled
 }
 
+input "1133:45108:Logitech_MX_Master_3S" {
+    pointer_accel 0.7
+}
+
+input "1278:33:HHKB-Hybrid_1_Keyboard" {
+    # Two layouts: first is plain US, second is US International ("intl" variant)
+    xkb_layout "us,us"
+    xkb_variant ",intl"
+    # Toggle layouts with Alt+Shift 
+    xkb_options "grp:alt_shift_toggle"
+}
+
+
 #
 # Example configuration:
 #
@@ -88,6 +101,7 @@ input type:touchpad {
     bindsym Mod4+t exec "wtype -M ctrl -k t"
     bindsym Mod4+c exec "wtype -M ctrl -k c"
     bindsym Mod4+v exec "wtype -M ctrl -M shift -k v"
+    bindsym Mod4+f exec "wtype -M ctrl -k f"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
