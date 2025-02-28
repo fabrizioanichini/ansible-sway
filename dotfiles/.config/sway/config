@@ -71,7 +71,7 @@ input "1278:33:HHKB-Hybrid_1_Keyboard" {
 }
 
 # Map Switch Layout like MacOs 
-bindsym Mod1+Shift+space input "1278:33:HHKB-Hybrid_1_Keyboard" xkb_switch_layout next
+bindsym Control+space input "1278:33:HHKB-Hybrid_1_Keyboard" xkb_switch_layout next
 
 
 #
