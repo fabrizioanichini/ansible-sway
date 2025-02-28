@@ -108,6 +108,9 @@ bindsym Control+space input "1278:33:HHKB-Hybrid_1_Keyboard" xkb_switch_layout n
     bindsym Mod4+v exec "wtype -M ctrl -M shift -k v"
     bindsym Mod4+f exec "wtype -M ctrl -k f"
     bindsym Mod4+a exec "wtype -M ctrl -k a"
+    bindsym Mod4+equal exec "wtype -M ctrl -k equal"  
+    bindsym Mod4+minus exec "wtype -M ctrl -k minus"           
+    bindsym Mod4+0 exec "wtype -M ctrl -k 0"           
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
