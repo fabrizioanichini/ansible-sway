@@ -1,0 +1,60 @@
+- name: Define home and username variables
+  set_fact:
+    home: "{{ lookup('env', 'HOME') }}"
+    username: "{{ lookup('env', 'USER') }}"
+  tags:
+    - zsh
+
+- name: Get zsh path
+  ansible.builtin.command: which zsh
+  register: zsh_path
+  changed_when: false
+  tags:
+    - zsh
+
+- name: Set Zsh as the default shell for the user
+  ansible.builtin.user:
+    name: "{{ username }}"
+    shell: "{{ zsh_path.stdout }}"
+  become: yes
+  tags:
+    - zsh
+
+- name: Install Oh-My-Zsh
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: "{{ home }}/.oh-my-zsh"
+    depth: 1
+  tags:
+    - zsh
+
+- name: Install zsh-autosuggestions plugin
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "{{ home }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags:
+    - zsh
+
+- name: Check current shell
+  ansible.builtin.command: echo $SHELL
+  register: current_shell
+  changed_when: false
+  tags:
+    - zsh
+
+- name: Display current shell
+  ansible.builtin.debug:
+    var: current_shell.stdout
+  tags:
+    - zsh
+
+- name: Display completion message
+  ansible.builtin.debug:
+    msg: 
+      - "Zsh setup is complete and set as your default shell using chsh!"
+      - "Current shell is: {{ current_shell.stdout }}"
+      - "Please log out and log back in for the changes to take effect."
+      - "If you're still seeing bash after logging out and back in, please check your terminal settings to ensure it's using the login shell."
+  tags:
+    - zsh
+

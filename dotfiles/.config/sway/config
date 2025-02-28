@@ -51,6 +51,8 @@ exec gammastep -c ~/.config/gammastep/config.ini
 # Start autotiling to automatically manage window layouts
 exec_always autotiling
 
+exec "swaymsg 'workspace 1; exec firefox'"
+
 ### Input configuration
 input type:touchpad {
     natural_scroll enabled
@@ -65,8 +67,11 @@ input "1278:33:HHKB-Hybrid_1_Keyboard" {
     xkb_layout "us,us"
     xkb_variant ",intl"
     # Toggle layouts with Alt+Shift 
-    xkb_options "grp:alt_shift_toggle"
+    # xkb_options "grp:alt_shift_toggle"
 }
+
+# Map Switch Layout like MacOs 
+bindsym Mod1+Shift+space input "1278:33:HHKB-Hybrid_1_Keyboard" xkb_switch_layout next
 
 
 #
@@ -102,6 +107,7 @@ input "1278:33:HHKB-Hybrid_1_Keyboard" {
     bindsym Mod4+c exec "wtype -M ctrl -k c"
     bindsym Mod4+v exec "wtype -M ctrl -M shift -k v"
     bindsym Mod4+f exec "wtype -M ctrl -k f"
+    bindsym Mod4+a exec "wtype -M ctrl -k a"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -184,7 +190,7 @@ input "1278:33:HHKB-Hybrid_1_Keyboard" {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+d focus mode_toggle

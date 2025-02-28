@@ -72,6 +72,20 @@ stop scanning
 ```bash
 scan off
 ```
+
+# NetworkManager
+Enable on boot
+```bash
+sudo systemctl enable NetworkManager
+```
+start now 
+```bash
+sudo systemctl start NetworkManager
+```
+check status
+```bash 
+systemctl status NetworkManager
+```
 ## Helpers 
 * [Bash Shortcuts](./doc/bash_shortcuts.md)
 

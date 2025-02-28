@@ -20,6 +20,11 @@
     - include_tasks: tasks/ssh.yml
       tags:
         - ssh
+    
+    # Include task for zsh shell 
+    - include_tasks: tasks/zsh.yml
+      tags:
+        - zsh 
 
     # Include task for Git global configuration
     - include_tasks: tasks/git-config.yml
