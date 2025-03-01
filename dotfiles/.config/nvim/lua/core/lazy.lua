@@ -30,7 +30,7 @@ require("lazy").setup({
 
 	-- VimFugitive
 	require("plugins.fugitive"),
-		
+
 	-- WhichKey
 	require("plugins.whichkey"),
 
@@ -58,6 +58,12 @@ require("lazy").setup({
 
 	-- Treesitter
 	require("plugins.treesitter"),
+
+	-- Neo Tree
+	require("plugins.neo-tree"),
+
+	-- UFO
+	require("plugins.ufo"),
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
