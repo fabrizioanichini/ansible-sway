@@ -64,6 +64,9 @@ require("lazy").setup({
 
 	-- UFO
 	require("plugins.ufo"),
+
+	-- UFO
+	require("plugins.diffview"),
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
