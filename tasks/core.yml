@@ -17,6 +17,8 @@
       - wtype
       - bluez
       - bluez-utils
+      - fd
+      - ripgrep
     state: present
     update_cache: yes
   tags:

@@ -3,11 +3,26 @@ return {
 	config = function()
 		local fzf = require("fzf-lua")
 		fzf.setup({
-			-- You can add custom options here if needed
-			-- For example, to change the preview layout, set winopts etc.
+			files = {
+				fd_opts = "--hidden --no-ignore --exclude .git --exclude venv --exclude .venv --exclude staticfiles --exclude node_modules",
+			},
+			grep = {
+				rg_opts = "--hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*' --glob '!venv/*' --glob '!.venv/*' --glob '!staticfiles/*'",
+			},
+			winopts = {
+				preview = {
+					layout = "vertical",
+					vertical = "up:50%",
+					title = "Preview",
+					scrollbar = "border",
+				},
+			},
+			fzf_opts = {
+				["--with-nth"] = "1..",
+				["--preview-window"] = "wrap",
+				["--preview"] = "bat --style=numbers --color=always --line-range=:100 {}",
+			},
 		})
-
-		-- Keymaps similar to your Telescope setup
 
 		-- Search help tags
 		vim.keymap.set("n", "<leader>sh", fzf.help_tags, { desc = "Search Help" })
@@ -15,26 +30,28 @@ return {
 		-- Search keymaps
 		vim.keymap.set("n", "<leader>sk", fzf.keymaps, { desc = "Search Keymaps" })
 
-		-- Search files including hidden files (ignores .git directory)
+		-- Search files including hidden files (respects .gitignore)
 		vim.keymap.set("n", "<leader>sf", function()
 			fzf.files({
 				cwd = vim.loop.cwd(),
-				fd_opts = "--hidden --no-ignore-vcs --exclude .git",
+				fd_opts = "--hidden --no-ignore --exclude .git --exclude node_modules --exclude venv --exclude .venv --exclude staticfiles",
+				previewer = "builtin",
 			})
-		end, { desc = "Search Files (including hidden)" })
+		end, { desc = "Search Files (including hidden, respecting .gitignore)" })
 
-		-- List available built-in commands (a general overview)
+		-- List available built-in commands
 		vim.keymap.set("n", "<leader>ss", fzf.builtin, { desc = "Search Builtin Commands" })
 
 		-- Search for the word under cursor (or any word you type)
 		vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "Search Word" })
 
-		-- Live grep in the project
-		vim.keymap.set("n", "<leader>sg", fzf.live_grep, { desc = "Live Grep" })
-
-		-- (Optional) Diagnostics search if you have a custom integration or want to leverage LSP diagnostics
-		-- You might need to write a wrapper function if not directly supported.
-		-- vim.keymap.set("n", "<leader>sd", fzf.lsp_document_diagnostics, { desc = "Search Diagnostics" })
+		-- Live grep in the project excluding .venv (respects .gitignore)
+		vim.keymap.set("n", "<leader>sg", function()
+			fzf.live_grep({
+				rg_opts = "--hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*' --glob '!venv/*' --glob '!.venv/*' --glob '!staticfiles/*'",
+				previewer = "builtin",
+			})
+		end, { desc = "Live Grep (excluding .venv, staticfiles, respecting .gitignore)" })
 
 		-- Resume previous search session
 		vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "Resume Search" })
@@ -48,7 +65,6 @@ return {
 		-- Fuzzy search within the current buffer
 		vim.keymap.set("n", "<leader>/", function()
 			fzf.blines({
-				-- Minimal preview for current buffer search
 				winopts = { preview = { hidden = true } },
 			})
 		end, { desc = "Fuzzily search in current buffer" })
