@@ -19,6 +19,8 @@
       - bluez-utils
       - fd
       - ripgrep
+      - nodejs
+      - npm
     state: present
     update_cache: yes
   tags:
