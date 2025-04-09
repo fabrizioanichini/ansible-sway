@@ -1,15 +1,15 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Dracula'
+config.color_scheme = "Dracula"
 
-config.font = wezterm.font('CaskaydiaCove Nerd Font Mono')
+config.font = wezterm.font("CaskaydiaCove Nerd Font Mono")
 
-config.font_size = 10 
+config.font_size = 15
 
 config.enable_tab_bar = false
 

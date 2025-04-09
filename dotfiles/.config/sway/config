@@ -1,4 +1,4 @@
-# Default config for sway
+
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -25,12 +25,12 @@ set $menu wmenu-run
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# HDMI LG – make this the primary display
+output DP-4 resolution 3840x2160 position 0,0 scale 2
+
+# Laptop Framework – position this relative to the HDMI
+output eDP-1 resolution 2256x1504 position 3840,0
 
 ### Idle configuration
 #

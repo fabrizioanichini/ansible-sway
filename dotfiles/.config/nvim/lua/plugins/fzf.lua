@@ -2,12 +2,18 @@ return {
 	"ibhagwan/fzf-lua",
 	config = function()
 		local fzf = require("fzf-lua")
+
+		local fd_opts =
+			"--type f --hidden --no-ignore --exclude .git --exclude venv --exclude .venv --exclude staticfiles --exclude node_modules --exclude __pycache__"
+		local rg_opts =
+			"--hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*' --glob '!venv/*' --glob '!.venv/*' --glob '!staticfiles/*' --glob '!__pycache__/*'"
+
 		fzf.setup({
 			files = {
-				fd_opts = "--hidden --no-ignore --exclude .git --exclude venv --exclude .venv --exclude staticfiles --exclude node_modules",
+				fd_opts = fd_opts,
 			},
 			grep = {
-				rg_opts = "--hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*' --glob '!venv/*' --glob '!.venv/*' --glob '!staticfiles/*'",
+				rg_opts = rg_opts,
 			},
 			winopts = {
 				preview = {
@@ -34,7 +40,7 @@ return {
 		vim.keymap.set("n", "<leader>sf", function()
 			fzf.files({
 				cwd = vim.loop.cwd(),
-				fd_opts = "--hidden --no-ignore --exclude .git --exclude node_modules --exclude venv --exclude .venv --exclude staticfiles",
+				fd_opts = fd_opts,
 				previewer = "builtin",
 			})
 		end, { desc = "Search Files (including hidden, respecting .gitignore)" })
@@ -48,10 +54,10 @@ return {
 		-- Live grep in the project excluding .venv (respects .gitignore)
 		vim.keymap.set("n", "<leader>sg", function()
 			fzf.live_grep({
-				rg_opts = "--hidden --no-ignore --glob '!.git/*' --glob '!node_modules/*' --glob '!venv/*' --glob '!.venv/*' --glob '!staticfiles/*'",
+				rg_opts = rg_opts,
 				previewer = "builtin",
 			})
-		end, { desc = "Live Grep (excluding .venv, staticfiles, respecting .gitignore)" })
+		end, { desc = "Live Grep (excluding .venv, staticfiles, __pycache__, etc.)" })
 
 		-- Resume previous search session
 		vim.keymap.set("n", "<leader>sr", fzf.resume, { desc = "Resume Search" })
@@ -76,10 +82,5 @@ return {
 				prompt = "Live Grep in Open Files > ",
 			})
 		end, { desc = "Search in open files" })
-
-		-- Search your Neovim configuration
-		vim.keymap.set("n", "<leader>sn", function()
-			fzf.files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "Search Neovim Config" })
 	end,
 }

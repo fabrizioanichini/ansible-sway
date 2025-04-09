@@ -22,19 +22,13 @@ require("lazy").setup({
 	-- Core
 	"tpope/vim-sleuth",
 
-	-- Greeter
-	require("plugins.greeter"),
-
 	-- Git signs
 	require("plugins.gitsigns"),
-
-	-- VimFugitive
-	require("plugins.fugitive"),
 
 	-- WhichKey
 	require("plugins.whichkey"),
 
-	-- Telescope
+	--  fzf
 	require("plugins.fzf"),
 
 	-- LSP / Completion
@@ -46,12 +40,6 @@ require("lazy").setup({
 
 	-- Colorscheme
 	require("plugins.colorscheme"),
-
-	-- TODO Comments
-	require("plugins.todo-comments"),
-
-	-- mini.nvim modules
-	require("plugins.mini"),
 
 	-- Harpoon
 	require("plugins.harpoon"),
@@ -65,7 +53,7 @@ require("lazy").setup({
 	-- UFO
 	require("plugins.ufo"),
 
-	-- UFO
+	-- Diffview
 	require("plugins.diffview"),
 }, {
 	ui = {
